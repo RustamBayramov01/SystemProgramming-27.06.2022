@@ -1,0 +1,141 @@
+﻿<Window x:Class="WpfApp1.Views.MainView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Views"
+        mc:Ignorable="d"
+        
+        Title="MainView" Height="250" Width="550">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+
+            <TextBlock Text="From" FontWeight="Bold" FontSize="20" Margin="20,10,0,0"></TextBlock>
+
+            <TextBox
+                 Text="{Binding FromTxt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Height="50"
+                    Width="350"
+                    Margin="20,0,0,0"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto"
+                    materialDesign:HintAssist.Hint="Txt"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}">
+                
+            </TextBox>
+
+            <Button
+                Command="{Binding FromCommand}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Content="File"
+                Background="Black"
+                Width="70"
+                Margin="10,0,0,0"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+
+            <TextBlock Text="To" FontWeight="Bold" FontSize="20" Margin="20,10,0,0"></TextBlock>
+
+            <TextBox
+                Text="{Binding ToTxt, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                    Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                    Height="50"
+                    Width="350"
+                    Margin="47,0,0,0"
+                    AcceptsReturn="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto"
+                    materialDesign:HintAssist.Hint="Txt"
+                    IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}">
+
+            </TextBox>
+
+            <Button
+                Command="{Binding ToCommand}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Content="File"
+                Background="Black"
+                Width="70"
+                Margin="10,0,0,0"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.RowSpan="3" Orientation="Horizontal">
+
+            <ProgressBar  
+                
+                Value="{Binding CurSize, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                Maximum="{Binding FileSize, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
+                Width="100" 
+                Margin="20,0,0,0" 
+                Height="25">
+                
+            </ProgressBar>
+
+            <Button
+                Command="{Binding SuspendCommand}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Content="Suspend"
+                Background="Black"
+                Width="90"
+                Margin="10,0,0,0"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+
+
+            <Button
+                Command="{Binding ResumeCommand}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Content="Resume"
+                Background="Black"
+                Width="90"
+                Margin="10,0,0,0"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+
+            <Button
+                 Command="{Binding AbortCommand}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Content="Abort"
+                Background="Black"
+                Width="90"
+                Margin="10,0,0,0"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+
+
+            <Button
+                Command="{Binding CopyCommand}"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                ToolTip="Resource name: MaterialDesignRaisedLightDarkButton"
+                Content="Copy"
+                Background="Black"
+                Width="90"
+                Margin="10,0,0,0"
+                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+
+
+        </StackPanel>
+
+    
+    </Grid>
+</Window>
